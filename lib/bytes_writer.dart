@@ -22,9 +22,6 @@ import 'wav_format.dart';
 class BytesWriter {
   final _bytes = BytesBuilder();
 
-  /// Clears the contents of the underlying BytesBuilder
-  void clear() => _bytes.clear();
-
   /// Writes a Uint8 to the buffer.
   void writeUint8(int x) => _bytes.addByte(x);
 
