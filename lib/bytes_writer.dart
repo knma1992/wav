@@ -51,10 +51,8 @@ class BytesWriter {
   void _writeBytes(ByteData b, int n) => _bytes.add(b.buffer.asUint8List(0, n));
 
   static final _fbuf = ByteData(8);
-  void _writeSampleFloat32(double x) =>
-      _writeBytes(_fbuf..setFloat32(0, x, Endian.little), 4);
-  void _writeSampleFloat64(double x) =>
-      _writeBytes(_fbuf..setFloat64(0, x, Endian.little), 8);
+  void _writeSampleFloat32(double x) => _writeBytes(_fbuf..setFloat32(0, x, Endian.little), 4);
+  void _writeSampleFloat64(double x) => _writeBytes(_fbuf..setFloat64(0, x, Endian.little), 8);
 
   /// Writes string [s] to the buffer. [s] must be ASCII only.
   void writeString(String s) {
@@ -66,13 +64,13 @@ class BytesWriter {
   /// Returns a closure that reads samples of the given [format] from this
   /// buffer. Calling these closures advances the read head of this buffer.
   SampleWriter getSampleWriter(WavFormat format) => [
-        _writeSample8Bit,
-        _writeSample16Bit,
-        _writeSample24Bit,
-        _writeSample32Bit,
-        _writeSampleFloat32,
-        _writeSampleFloat64,
-      ][format.index];
+    _writeSample8Bit,
+    _writeSample16Bit,
+    _writeSample24Bit,
+    _writeSample32Bit,
+    _writeSampleFloat32,
+    _writeSampleFloat64,
+  ][format.index];
 
   /// Takes the byte buffer from [this] and clears [this].
   Uint8List takeBytes() => _bytes.takeBytes();
