@@ -54,7 +54,8 @@ class BytesReader {
   int readUint32() => _read(4).getUint32(0, Endian.little);
 
   /// Reads a String from the buffer.
-  String readString(int length) => String.fromCharCodes(Uint8List.sublistView(_read(length)));
+  String readString(int length) =>
+      String.fromCharCodes(Uint8List.sublistView(_read(length)));
 
   bool _checkString(String s) => s == readString(s.length);
 
